@@ -6,4 +6,8 @@
     <string name="issue">Issue:</string>
     <string name="subcontractor">SubContractor:</string>
     <string name="trade">Trade:</string>
+    <string name="action_taken">Action Taken:</string>
+    <string name="save">save</string>
+    <string name="save_and_new">save and new</string>
+    <string name="cancel">cancel</string>
 </resources>
