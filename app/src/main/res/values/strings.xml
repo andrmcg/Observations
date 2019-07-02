@@ -10,4 +10,5 @@
     <string name="save">save</string>
     <string name="save_and_new">save and new</string>
     <string name="cancel">cancel</string>
+    <string name="enter_action_taken">Enter Action Taken</string>
 </resources>
