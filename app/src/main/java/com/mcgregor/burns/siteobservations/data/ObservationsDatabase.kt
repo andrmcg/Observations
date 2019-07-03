@@ -6,15 +6,12 @@ import androidx.room.Database
 import androidx.room.Room
 import androidx.room.RoomDatabase
 import androidx.sqlite.db.SupportSQLiteDatabase
-import entities.Issue
 import entities.Observation
-import entities.SubContract
-import entities.Trade
 import kotlinx.coroutines.CoroutineScope
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.launch
 
-@Database(entities = [Observation::class, Trade::class, SubContract::class, Issue::class], version = 1)
+@Database(entities = [Observation::class], version = 1)
 abstract class ObservationsDatabase : RoomDatabase() {
 
     abstract fun dao(): ObservationsDao
@@ -50,7 +47,7 @@ abstract class ObservationsDatabase : RoomDatabase() {
                 if (db.query("select * from observations_table").count <= 0) {
                     INSTANCE?.let { database ->
                         scope.launch(Dispatchers.IO) {
-                            //TODO populateDatabase(database.dao(), database.leagueDao(), ctx)
+                            populateDatabase(database.dao(), ctx)
                         }
                     }
                 }
@@ -59,6 +56,14 @@ abstract class ObservationsDatabase : RoomDatabase() {
 
             }
         }
+
+        private fun populateDatabase(dao: ObservationsDao, ctx: Context) {
+            dao.deleteAll()
+
+            //TODO code to poulate database
+
+        }
+
     }
 
 }
