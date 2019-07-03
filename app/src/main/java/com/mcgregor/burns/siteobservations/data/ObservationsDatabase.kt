@@ -17,6 +17,8 @@ import kotlinx.coroutines.launch
 @Database(entities = [Observation::class, Trade::class, SubContract::class, Issue::class], version = 1)
 abstract class ObservationsDatabase : RoomDatabase() {
 
+    abstract fun dao(): ObservationsDao
+
     companion object {
         @Volatile
         private var INSTANCE: ObservationsDatabase? = null
