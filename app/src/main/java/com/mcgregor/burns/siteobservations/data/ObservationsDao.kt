@@ -16,4 +16,7 @@ interface ObservationsDao {
     @Query("select * from observations_table")
     fun selectAll(): LiveData<List<Observation>>
 
+    @Query("delete from observations_table")
+    fun deleteAll()
+
 }
