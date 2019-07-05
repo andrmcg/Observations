@@ -4,25 +4,22 @@ import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.widget.ArrayAdapter
 import android.widget.SpinnerAdapter
+import androidx.navigation.NavController
+import androidx.navigation.findNavController
 import kotlinx.android.synthetic.main.observation_layout.*
 
 
 class MainActivity : AppCompatActivity() {
 
+    private lateinit var navController: NavController
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        setContentView(R.layout.observation_layout)
+        setContentView(R.layout.activity_main)
 
-        val tradeAdapter = ArrayAdapter(applicationContext,R.layout.spinner_list, trades)
-        val conditionsAdapter = ArrayAdapter(applicationContext,R.layout.spinner_list, conditions)
-        val severityAdapter = ArrayAdapter(this,R.layout.spinner_list, Severity.values())
-        val issuesAdapter = ArrayAdapter(this,R.layout.spinner_list, issues)
-        val contractorsAdapter = ArrayAdapter(this,R.layout.spinner_list, contractors)
-        trade_spinner.adapter = tradeAdapter
-        condition_spinner.adapter = conditionsAdapter
-        severity_spinner.adapter = severityAdapter
-        issue_spinner.adapter = issuesAdapter
-        contractor_spinner.adapter = contractorsAdapter
-
+        navController = findNavController(R.id.nav_host_fragment)
     }
+
+    override fun onSupportNavigateUp(): Boolean = navController.navigateUp() || super.onSupportNavigateUp()
+
 }

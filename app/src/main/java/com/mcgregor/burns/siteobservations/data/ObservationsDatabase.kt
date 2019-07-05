@@ -6,6 +6,7 @@ import androidx.room.Database
 import androidx.room.Room
 import androidx.room.RoomDatabase
 import androidx.sqlite.db.SupportSQLiteDatabase
+import com.mcgregor.burns.siteobservations.Severity
 import entities.Observation
 import kotlinx.coroutines.CoroutineScope
 import kotlinx.coroutines.Dispatchers
@@ -58,9 +59,10 @@ abstract class ObservationsDatabase : RoomDatabase() {
         }
 
         private fun populateDatabase(dao: ObservationsDao, ctx: Context) {
-            dao.deleteAll()
 
             //TODO code to poulate database
+            //var ob = Observation("Groundworker","Akela","Shite",Severity.High.name, "Poor","Get Rid")
+            //dao.insert(ob)
 
         }
 
