@@ -1,19 +1,21 @@
 package com.mcgregor.burns.siteobservations
 
+import com.mcgregor.burns.siteobservations.data.ObservationViewModel
+
 enum class Severity {
     Low, Medium, High
 }
 
-val conditions = listOf<String>("unsafe Act", "Unsafe Condition", "Near miss", "Significant Near Miss")
+var observationViewModel: ObservationViewModel? = null
 
-val contractors: List<String> = listOf<String>(
-    "Akela", "Bunyand and Bell", "Dovend", "Turner Access", "Marley", "Kelvin", "Tilecraft",
+val conditions = listOf<String>("","unsafe Act", "Unsafe Condition", "Near miss", "Significant Near Miss")
+
+val contractors: List<String> = listOf<String>("","Akela", "Bunyand and Bell", "Dovend", "Turner Access", "Marley", "Kelvin", "Tilecraft",
     "Tclarke", "Pbr", "A Boyd", "Bricklayers", "KS Windows", "Universal", "Voltaire", "Landscape Design", "Flooring Contractor",
     "Jdr", "Energy Assets", "Apex", "Cleaner"
 )
 
-val trades = listOf<String>(
-    "Bricklayer", "Cala", "Cleaner", "Demolition", "Electricity / Services",
+val trades = listOf<String>("","Bricklayer", "Cala", "Cleaner", "Demolition", "Electricity / Services",
     "Fencing", "Flooring", "General Builder", "Groundworker", "Housekeeping", "Insulation",
     "Joiner / Carpenter", "Kit / Timber Frame", "Kitchen", "Landscaper", "Lift", "Mastic",
     "Other", "Painting & Decorating", "Piling", "Plasterer / Dryliner", "Plumbing", "Roof Tiler",
@@ -21,8 +23,7 @@ val trades = listOf<String>(
     "Traffic management", "Utilities", "Wardrobe", "Window Fitter"
 )
 
-val issues = listOf<String>(
-    "Access / Egress - Inadequate",
+val issues = listOf<String>("","Access / Egress - Inadequate",
     "Access / Egress - Plot Access",
     "Access / Egress - Temp Stairs / Handrail",
     "Electrical - Generally Unsafe",

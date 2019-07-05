@@ -19,7 +19,7 @@ import kotlinx.android.synthetic.main.observation_layout.*
 class ObservationFragment : Fragment() {
 
     private lateinit var navController: NavController
-    private lateinit var observationViewModel: ObservationViewModel
+    //private lateinit var observationViewModel: ObservationViewModel
     private lateinit var observations: List<Observation>
 
     override fun onCreateView(
@@ -36,19 +36,64 @@ class ObservationFragment : Fragment() {
         navController = findNavController()
 
         populateControls()
+        setUpButtons()
 
-        observationViewModel = ViewModelProviders.of(this).get(ObservationViewModel::class.java)
-        observationViewModel.observations.observe(this, Observer { c ->
+        if (observationViewModel == null) observationViewModel = ViewModelProviders.of(this).get(ObservationViewModel::class.java)
+        /*observationViewModel.observations.observe(this, Observer { c ->
             c.let {
                 if (c.isNotEmpty()) {
                     observations = c
                 }
             }
-        })
+        })*/
 
     }
 
+    private fun setUpButtons() {
+
+        save_button.setOnClickListener { v ->
+            var obs = Observation().apply {
+                trade = trade_spinner.selectedItem.toString()
+                subContractor = contractor_spinner.selectedItem.toString()
+                issue = issue_spinner.selectedItem.toString()
+                severity = severity_spinner.selectedItem.toString()
+                condition = condition_spinner.selectedItem.toString()
+                actionTaken = actionTaken_editText.text.toString()
+            }
+
+            observationViewModel?.insert(obs)
+        }
+        save_new_button.setOnClickListener { v ->
+
+            var obs = Observation().apply {
+                trade = trade_spinner.selectedItem.toString()
+                subContractor = contractor_spinner.selectedItem.toString()
+                issue = issue_spinner.selectedItem.toString()
+                severity = severity_spinner.selectedItem.toString()
+                condition = condition_spinner.selectedItem.toString()
+                actionTaken = actionTaken_editText.text.toString()
+            }
+
+            observationViewModel?.insert(obs)
+
+            clearFields()
+        }
+        cancel_button.setOnClickListener { v ->
+            clearFields()
+        }
+
+    }
+
+    private fun clearFields() {
+        trade_spinner.setSelection(0, true)
+        condition_spinner.setSelection(0, true)
+        issue_spinner.setSelection(0, true)
+        contractor_spinner.setSelection(0, true)
+        actionTaken_editText.text.clear()
+    }
+
     private fun populateControls() {
+
         val tradeAdapter = ArrayAdapter(context, R.layout.spinner_list, trades)
         val conditionsAdapter = ArrayAdapter(context, R.layout.spinner_list, conditions)
         val severityAdapter = ArrayAdapter(context, R.layout.spinner_list, Severity.values())
@@ -60,5 +105,6 @@ class ObservationFragment : Fragment() {
         issue_spinner.adapter = issuesAdapter
         contractor_spinner.adapter = contractorsAdapter
     }
+
 
 }
