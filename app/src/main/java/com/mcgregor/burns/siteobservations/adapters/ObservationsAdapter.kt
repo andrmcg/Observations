@@ -33,6 +33,7 @@ class ObservationsAdapter(observations:List<Observation>): RecyclerView.Adapter<
 
     inner class MyViewHolder(v: View): RecyclerView.ViewHolder(v)
     {
+
         lateinit var firstText:TextView
         lateinit var secondText:TextView
         init {
