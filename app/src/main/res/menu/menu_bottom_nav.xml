@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android">
+
+    <item
+        android:id="@+id/dateEntryMenuItem"
+        android:enabled="false"
+        android:icon="@drawable/baseline_input_24"
+        android:title="@string/menu_data_entry"
+        android:visible="true" />
+
+    <item
+        android:id="@+id/dataDisplayMenuItem"
+        android:enabled="true"
+        android:icon="@drawable/baseline_view_list_24"
+        android:title="@string/menu_data_display"
+        android:visible="true" />
+
+</menu>
