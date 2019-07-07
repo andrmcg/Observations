@@ -5,6 +5,7 @@ import android.os.Bundle
 import android.view.MenuItem
 import android.widget.ArrayAdapter
 import android.widget.SpinnerAdapter
+import android.widget.Toast
 import androidx.navigation.NavController
 import androidx.navigation.findNavController
 import androidx.navigation.ui.setupWithNavController
@@ -23,15 +24,17 @@ class MainActivity : AppCompatActivity() {
         navController = findNavController(R.id.nav_host_fragment)
 
         bottom_nav.setupWithNavController(navController)
-        bottom_nav.menu.findItem(R.id.dateEntryMenuItem).setOnMenuItemClickListener(MenuItem.OnMenuItemClickListener { item ->
-            navController.navigate(R.id.observationFragment)
-            true
-        })
+        bottom_nav.menu.findItem(R.id.dateEntryMenuItem)
+            .setOnMenuItemClickListener(MenuItem.OnMenuItemClickListener { item ->
+                navController.navigate(R.id.observationFragment)
+                true
+            })
 
-        bottom_nav.menu.findItem(R.id.dataDisplayMenuItem).setOnMenuItemClickListener(MenuItem.OnMenuItemClickListener { item ->
-            navController.navigate(R.id.observationFragment)
-            true
-        })
+        bottom_nav.menu.findItem(R.id.dataDisplayMenuItem)
+            .setOnMenuItemClickListener(MenuItem.OnMenuItemClickListener { item ->
+                navController.navigate(R.id.displayObservationsFragment)
+                true
+            })
 
     }
 

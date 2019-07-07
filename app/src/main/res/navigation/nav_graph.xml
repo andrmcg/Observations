@@ -9,5 +9,14 @@
         android:id="@+id/observationFragment"
         android:name="com.mcgregor.burns.siteobservations.ObservationFragment"
         android:label="observation_layout"
-        tools:layout="@layout/observation_layout" />
+        tools:layout="@layout/observation_layout" >
+        <action
+            android:id="@+id/action_observationFragment_to_displayObservationsFragment"
+            app:destination="@id/displayObservationsFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/displayObservationsFragment"
+        android:name="com.mcgregor.burns.siteobservations.DisplayObservationsFragment"
+        android:label="fragment_display_observations"
+        tools:layout="@layout/fragment_display_observations" />
 </navigation>

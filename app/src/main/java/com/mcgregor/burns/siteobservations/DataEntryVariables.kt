@@ -11,11 +11,11 @@ var observationViewModel: ObservationViewModel? = null
 val conditions = listOf<String>("","unsafe Act", "Unsafe Condition", "Near miss", "Significant Near Miss")
 
 val contractors: List<String> = listOf<String>("","Akela", "Bunyand and Bell", "Dovend", "Turner Access", "Marley", "Kelvin", "Tilecraft",
-    "Tclarke", "Pbr", "A Boyd", "Bricklayers", "KS Windows", "Universal", "Voltaire", "Landscape Design", "Flooring Contractor",
-    "Jdr", "Energy Assets", "Apex", "Cleaner"
+    "Tclarke", "Pbr", "A Boyd", "Bricklayers", "KS Windows", "Universal", "Voltaire", "Landscape Design", "B2B Flooring",
+    "Jdr", "Energy Assets", "Apex", "SG Pro"
 )
 
-val trades = listOf<String>("","Bricklayer", "Cala", "Cleaner", "Demolition", "Electricity / Services",
+val trades = listOf<String>("","Bricklayer", "Cala", "Cleaners", "Demolition", "Electricity / Services",
     "Fencing", "Flooring", "General Builder", "Groundworker", "Housekeeping", "Insulation",
     "Joiner / Carpenter", "Kit / Timber Frame", "Kitchen", "Landscaper", "Lift", "Mastic",
     "Other", "Painting & Decorating", "Piling", "Plasterer / Dryliner", "Plumbing", "Roof Tiler",

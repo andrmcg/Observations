@@ -19,7 +19,7 @@ import kotlinx.android.synthetic.main.observation_layout.*
 class ObservationFragment : Fragment() {
 
     private lateinit var navController: NavController
-    //private lateinit var observationViewModel: ObservationViewModel
+    private lateinit var observationViewModel: ObservationViewModel
     private lateinit var observations: List<Observation>
 
     override fun onCreateView(
@@ -38,14 +38,14 @@ class ObservationFragment : Fragment() {
         populateControls()
         setUpButtons()
 
-        if (observationViewModel == null) observationViewModel = ViewModelProviders.of(this).get(ObservationViewModel::class.java)
-        /*observationViewModel.observations.observe(this, Observer { c ->
+        observationViewModel = ViewModelProviders.of(this).get(ObservationViewModel::class.java)
+        observationViewModel?.observations?.observe(this, Observer { c ->
             c.let {
                 if (c.isNotEmpty()) {
                     observations = c
                 }
             }
-        })*/
+        })
 
     }
 
