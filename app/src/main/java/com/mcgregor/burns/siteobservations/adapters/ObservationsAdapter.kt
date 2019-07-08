@@ -3,9 +3,7 @@ package com.mcgregor.burns.siteobservations.adapters
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import android.widget.AdapterView
 import android.widget.TextView
-import androidx.cardview.widget.CardView
 import androidx.recyclerview.widget.RecyclerView
 import com.mcgregor.burns.siteobservations.R
 import entities.Observation
@@ -14,9 +12,18 @@ class ObservationsAdapter(observations:List<Observation>): RecyclerView.Adapter<
 
     private lateinit var _observations: List<Observation>
 
+    private lateinit var mClickListener: View.OnLongClickListener
+
     init {
         _observations = observations
+
     }
+
+    public fun setOnLongItemClickListener(itemClickListener: View.OnLongClickListener)
+    {
+        mClickListener = itemClickListener
+    }
+
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): MyViewHolder {
         val v = LayoutInflater.from(parent.context).inflate(R.layout.observation_item_view, parent,false)
@@ -33,10 +40,13 @@ class ObservationsAdapter(observations:List<Observation>): RecyclerView.Adapter<
         holder.conditionText.text = _observations.get(position).condition
         holder.severityText.text = _observations.get(position).severity
         holder.actionText.text = _observations.get(position).actionTaken
+
     }
+
 
     inner class MyViewHolder(v: View): RecyclerView.ViewHolder(v)
     {
+
         var contractorText:TextView
         var issueText:TextView
         var conditionText: TextView
@@ -49,6 +59,9 @@ class ObservationsAdapter(observations:List<Observation>): RecyclerView.Adapter<
             conditionText = v.findViewById(R.id.conditionText)
             severityText = v.findViewById(R.id.severityText)
             actionText = v.findViewById(R.id.actionText)
+
+            v.tag = this
+            v.setOnLongClickListener(mClickListener)
         }
 
     }

@@ -17,4 +17,10 @@ class ObservationRepository(private val dao: ObservationsDao) {
         dao.deleteAll()
     }
 
+    @WorkerThread
+    suspend fun delete(observation: Observation)
+    {
+        dao.delete(observation)
+    }
+
 }

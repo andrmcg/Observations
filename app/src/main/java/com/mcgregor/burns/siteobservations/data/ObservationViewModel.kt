@@ -34,6 +34,10 @@ class ObservationViewModel(application:Application): AndroidViewModel(applicatio
         repository.deleteAll()
     }
 
+    fun delete(observation: Observation) = scope.launch(Dispatchers.IO){
+        repository.delete(observation)
+    }
+
     override fun onCleared() {
         super.onCleared()
         parentJob.cancel()

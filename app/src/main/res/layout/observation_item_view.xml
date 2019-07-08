@@ -15,6 +15,7 @@
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:orientation="vertical"
+        android:background="@color/colorPrimaryDark"
         android:padding="6dp">
 
         <TextView
@@ -22,13 +23,14 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:textAppearance="?android:attr/textAppearanceLarge"
-            android:textColor="@color/colorPrimary"
+            android:textColor="@color/primaryText"
             tools:text="Contractor" />
 
         <TextView
             android:id="@+id/issueText"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
+            android:textColor="@color/primaryText"
             android:textAppearance="?android:attr/textAppearanceMedium"
             tools:text="Issue" />
 
@@ -42,14 +44,15 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:textAppearance="?android:attr/textAppearanceMedium"
+                android:textColor="@color/primaryText"
                 tools:text="Condition" />
 
             <TextView
                 android:id="@+id/severityText"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:paddingEnd="6dp"
                 android:paddingStart="6dp"
+                android:paddingEnd="6dp"
                 android:textAlignment="viewEnd"
                 android:textColor="@color/colorAccent"
                 android:textStyle="bold"
@@ -61,9 +64,13 @@
             android:id="@+id/actionText"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
+            android:background="@color/colorPrimary"
             android:padding="2dp"
+            android:shadowColor="@color/colorPrimaryDark"
+            android:shadowRadius="6"
             android:textAlignment="gravity"
             android:textAppearance="?android:attr/textAppearanceMedium"
+            android:textColor="@color/primaryText"
             tools:text="Contractor to hold toolbox talk and operative given a final warning" />
 
     </LinearLayout>

@@ -2,17 +2,16 @@ package com.mcgregor.burns.siteobservations
 
 
 import android.os.Bundle
-import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import android.widget.LinearLayout
+import androidx.fragment.app.Fragment
 import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProviders
 import androidx.navigation.NavController
 import androidx.navigation.fragment.findNavController
-import androidx.recyclerview.widget.GridLayoutManager
 import androidx.recyclerview.widget.LinearLayoutManager
+import androidx.recyclerview.widget.RecyclerView
 import com.mcgregor.burns.siteobservations.adapters.ObservationsAdapter
 import com.mcgregor.burns.siteobservations.data.ObservationViewModel
 import entities.Observation
@@ -29,6 +28,16 @@ class DisplayObservationsFragment : Fragment() {
     private lateinit var observationViewModel: ObservationViewModel
     private lateinit var observations: List<Observation>
     private lateinit var observationAdapter: ObservationsAdapter
+
+    private var mClickListener = View.OnLongClickListener { v ->
+        var viewHolder = v.tag as RecyclerView.ViewHolder
+        if (observations.isNotEmpty()) {
+            observationViewModel.delete(observations.get(viewHolder.adapterPosition))
+            true
+        }
+        else false
+    }
+
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
@@ -50,10 +59,12 @@ class DisplayObservationsFragment : Fragment() {
                     observationAdapter = ObservationsAdapter(observations)
                     observations_list.layoutManager = LinearLayoutManager(this.context)
                     observations_list.adapter = observationAdapter
+                    observationAdapter.setOnLongItemClickListener(mClickListener)
                 }
             }
         })
 
     }
+
 
 }

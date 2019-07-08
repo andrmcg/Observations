@@ -1,10 +1,7 @@
 package com.mcgregor.burns.siteobservations.data
 
 import androidx.lifecycle.LiveData
-import androidx.room.Dao
-import androidx.room.Insert
-import androidx.room.OnConflictStrategy
-import androidx.room.Query
+import androidx.room.*
 import entities.Observation
 
 @Dao
@@ -18,5 +15,8 @@ interface ObservationsDao {
 
     @Query("delete from observations_table")
     fun deleteAll()
+
+    @Delete
+    fun delete(observation: Observation)
 
 }
