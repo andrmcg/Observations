@@ -8,6 +8,7 @@ import android.widget.SpinnerAdapter
 import android.widget.Toast
 import androidx.navigation.NavController
 import androidx.navigation.findNavController
+import androidx.navigation.fragment.FragmentNavigator
 import androidx.navigation.ui.setupWithNavController
 import kotlinx.android.synthetic.main.activity_main.*
 import kotlinx.android.synthetic.main.observation_layout.*
@@ -22,6 +23,20 @@ class MainActivity : AppCompatActivity() {
         setContentView(R.layout.activity_main)
 
         navController = findNavController(R.id.nav_host_fragment)
+
+        navController.addOnDestinationChangedListener(NavController.OnDestinationChangedListener{c,d,b ->
+            val destination = (c.currentDestination as FragmentNavigator.Destination).className
+            when(destination){
+                "com.mcgregor.burns.siteobservations.ObservationFragment" -> {
+                    bottom_nav.menu.findItem(R.id.dateEntryMenuItem).isEnabled = false
+                    bottom_nav.menu.findItem(R.id.dataDisplayMenuItem).isEnabled = true
+                }
+                "com.mcgregor.burns.siteobservations.DisplayObservationsFragment" -> {
+                    bottom_nav.menu.findItem(R.id.dateEntryMenuItem).isEnabled = true
+                    bottom_nav.menu.findItem(R.id.dataDisplayMenuItem).isEnabled = false
+                }
+            }
+        })
 
         bottom_nav.setupWithNavController(navController)
         bottom_nav.menu.findItem(R.id.dateEntryMenuItem)

@@ -1,22 +1,71 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<androidx.cardview.widget.CardView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/cardView"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
-    android:orientation="vertical"
-    android:paddingStart="12dp"
-    android:paddingBottom="12dp">
+    android:layout_margin="12dp"
+    android:elevation="12dp"
+    app:cardCornerRadius="12dp"
+    app:cardElevation="12dp"
+    app:layout_insetEdge="bottom">
 
-    <TextView
-        android:id="@+id/contractor"
+    <LinearLayout
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:textAppearance="?android:attr/textAppearanceLarge" />
+        android:layout_height="match_parent"
+        android:orientation="vertical"
+        android:padding="6dp">
 
-    <TextView
-        android:id="@+id/issue"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:textAppearance="?android:attr/textAppearanceMedium"
-        android:textColor="@color/colorAccent" />
+        <TextView
+            android:id="@+id/contractorText"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textAppearance="?android:attr/textAppearanceLarge"
+            android:textColor="@color/colorPrimary"
+            tools:text="Contractor" />
 
-</LinearLayout>
+        <TextView
+            android:id="@+id/issueText"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textAppearance="?android:attr/textAppearanceMedium"
+            tools:text="Issue" />
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal">
+
+            <TextView
+                android:id="@+id/conditionText"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textAppearance="?android:attr/textAppearanceMedium"
+                tools:text="Condition" />
+
+            <TextView
+                android:id="@+id/severityText"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:paddingEnd="6dp"
+                android:paddingStart="6dp"
+                android:textAlignment="viewEnd"
+                android:textColor="@color/colorAccent"
+                android:textStyle="bold"
+                tools:text="Severity" />
+
+        </LinearLayout>
+
+        <TextView
+            android:id="@+id/actionText"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:padding="2dp"
+            android:textAlignment="gravity"
+            android:textAppearance="?android:attr/textAppearanceMedium"
+            tools:text="Contractor to hold toolbox talk and operative given a final warning" />
+
+    </LinearLayout>
+
+</androidx.cardview.widget.CardView>
