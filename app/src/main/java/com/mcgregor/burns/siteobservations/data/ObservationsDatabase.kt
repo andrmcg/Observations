@@ -6,13 +6,12 @@ import androidx.room.Database
 import androidx.room.Room
 import androidx.room.RoomDatabase
 import androidx.sqlite.db.SupportSQLiteDatabase
-import com.mcgregor.burns.siteobservations.Severity
 import entities.Observation
 import kotlinx.coroutines.CoroutineScope
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.launch
 
-@Database(entities = [Observation::class], version = 1)
+@Database(entities = [Observation::class], version = 2, exportSchema = false)
 abstract class ObservationsDatabase : RoomDatabase() {
 
     abstract fun dao(): ObservationsDao
@@ -46,9 +45,9 @@ abstract class ObservationsDatabase : RoomDatabase() {
             super.onOpen(db)
             try {
                 if (db.query("select * from observations_table").count <= 0) {
-                    INSTANCE?.let { database ->
+                    INSTANCE?.let { _ ->
                         scope.launch(Dispatchers.IO) {
-                            populateDatabase(database.dao(), ctx)
+                            //populateDatabase(database.dao(), ctx)
                         }
                     }
                 }
@@ -58,13 +57,13 @@ abstract class ObservationsDatabase : RoomDatabase() {
             }
         }
 
-        private fun populateDatabase(dao: ObservationsDao, ctx: Context) {
+        /*private fun populateDatabase(dao: ObservationsDao, ctx: Context) {
 
             //TODO code to poulate database
             //var ob = Observation("Groundworker","Akela","Shite",Severity.High.name, "Poor","Get Rid")
             //dao.insert(ob)
 
-        }
+        }*/
 
     }
 

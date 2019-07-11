@@ -22,23 +22,14 @@ import kotlinx.android.synthetic.main.fragment_display_observations.*
  * A simple [Fragment] subclass.
  *
  */
-class DisplayObservationsFragment : Fragment() {
+class DisplayObservationsFragment : Fragment(), View.OnLongClickListener {
+
 
     private lateinit var navController: NavController
     private lateinit var observationViewModel: ObservationViewModel
     private lateinit var observations: List<Observation>
     private lateinit var observationAdapter: ObservationsAdapter
-
-    private var mClickListener = View.OnLongClickListener { v ->
-        var viewHolder = v.tag as RecyclerView.ViewHolder
-        if (observations.isNotEmpty()) {
-            observationViewModel.delete(observations.get(viewHolder.adapterPosition))
-            true
-        }
-        else false
-    }
-
-
+    
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
@@ -59,11 +50,28 @@ class DisplayObservationsFragment : Fragment() {
                     observationAdapter = ObservationsAdapter(observations)
                     observations_list.layoutManager = LinearLayoutManager(this.context)
                     observations_list.adapter = observationAdapter
-                    observationAdapter.setOnLongItemClickListener(mClickListener)
+                    observationAdapter.setOnLongItemClickListener(this)
+                }
+                else {
+                    observationAdapter = ObservationsAdapter(c)
+                    observations_list.layoutManager = LinearLayoutManager(this.context)
+                    observations_list.adapter = observationAdapter
                 }
             }
         })
 
+
+    }
+
+    override fun onLongClick(v: View?): Boolean {
+        var viewHolder = v?.tag as RecyclerView.ViewHolder
+        if (observations.isNotEmpty()) {
+            val position = viewHolder.adapterPosition
+            observationViewModel.delete(observations.get(position))
+            observationAdapter.notifyItemRemoved(position)
+            return true
+        }
+        else return false
     }
 
 

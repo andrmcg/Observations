@@ -10,7 +10,7 @@ import entities.Observation
 
 class ObservationsAdapter(observations:List<Observation>): RecyclerView.Adapter<ObservationsAdapter.MyViewHolder>() {
 
-    private lateinit var _observations: List<Observation>
+    private var _observations: List<Observation>
 
     private lateinit var mClickListener: View.OnLongClickListener
 
