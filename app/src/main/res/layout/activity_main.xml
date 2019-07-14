@@ -27,9 +27,9 @@
 
         <com.google.android.material.bottomnavigation.BottomNavigationView
             android:id="@+id/bottom_nav"
+            style="@style/Widget.MaterialComponents.BottomNavigationView"
             android:layout_width="match_parent"
             android:layout_height="60dp"
-            android:background="@color/colorAccent"
             app:menu="@menu/menu_bottom_nav" />
 
     </LinearLayout>

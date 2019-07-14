@@ -6,11 +6,13 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.ArrayAdapter
+import android.widget.AutoCompleteTextView
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProviders
 import androidx.navigation.NavController
 import androidx.navigation.fragment.findNavController
+import com.google.android.material.textfield.TextInputLayout
 import com.mcgregor.burns.siteobservations.data.ObservationViewModel
 import entities.Observation
 import kotlinx.android.synthetic.main.observation_layout.*
@@ -54,27 +56,27 @@ class ObservationFragment : Fragment() {
         save_button.setOnClickListener { _ ->
             if (checkFields()) {
                 var obs = Observation().apply {
-                    trade = trade_spinner.selectedItem.toString()
-                    subContractor = contractor_spinner.selectedItem.toString()
-                    issue = issue_spinner.selectedItem.toString()
-                    severity = severity_spinner.selectedItem.toString()
-                    condition = condition_spinner.selectedItem.toString()
-                    actionTaken = actionTaken_editText.text.toString()
+                    trade = trade_text.editText?.text.toString()
+                    subContractor = contractor_text.editText?.text.toString()
+                    issue = issue_text.editText?.text.toString()
+                    severity = severity_text.editText?.text.toString()
+                    condition = condition_text.editText?.text.toString()
+                    actionTaken = action_text.editText?.text.toString()
                 }
 
                 observationViewModel.insert(obs)
             }
         }
-        save_new_button.setOnClickListener { _ ->
 
+        save_new_button.setOnClickListener { _ ->
             if (checkFields()) {
                 var obs = Observation().apply {
-                    trade = trade_spinner.selectedItem.toString()
-                    subContractor = contractor_spinner.selectedItem.toString()
-                    issue = issue_spinner.selectedItem.toString()
-                    severity = severity_spinner.selectedItem.toString()
-                    condition = condition_spinner.selectedItem.toString()
-                    actionTaken = actionTaken_editText.text.toString()
+                    trade = trade_text.editText?.text.toString()
+                    subContractor = contractor_text.editText?.text.toString()
+                    issue = issue_text.editText?.text.toString()
+                    severity = severity_text.editText?.text.toString()
+                    condition = condition_text.editText?.text.toString()
+                    actionTaken = action_text.editText?.text.toString()
                 }
 
                 observationViewModel.insert(obs)
@@ -90,65 +92,58 @@ class ObservationFragment : Fragment() {
     }
 
     private fun clearFields() {
-        trade_spinner.setSelection(0, true)
-        condition_spinner.setSelection(0, true)
-        issue_spinner.setSelection(0, true)
-        contractor_spinner.setSelection(0, true)
-        actionTaken_editText.text.clear()
+        trade_text.editText?.text?.clear()
+        contractor_text.editText?.text?.clear()
+        issue_text.editText?.text?.clear()
+        severity_text.editText?.text?.clear()
+        condition_text.editText?.text?.clear()
+        action_text.editText?.text?.clear()
     }
 
     private fun populateControls() {
 
-        val tradeAdapter = ArrayAdapter(context!!, R.layout.spinner_list, trades.sorted())
-        val conditionsAdapter = ArrayAdapter(context!!, R.layout.spinner_list, conditions)
-        val severityAdapter = ArrayAdapter(context!!, R.layout.spinner_list, Severity.values())
-        val issuesAdapter = ArrayAdapter(context!!, R.layout.spinner_list, issues)
-        val contractorsAdapter = ArrayAdapter(context!!, R.layout.spinner_list, contractors.sorted())
-        trade_spinner.adapter = tradeAdapter
-        condition_spinner.adapter = conditionsAdapter
-        severity_spinner.adapter = severityAdapter
-        issue_spinner.adapter = issuesAdapter
-        contractor_spinner.adapter = contractorsAdapter
+        val tradeAdapter = ArrayAdapter(context!!, R.layout.dropdown_menu_popup_item, trades)
+        val conditionsAdapter = ArrayAdapter(context!!, R.layout.dropdown_menu_popup_item, conditions)
+        val severityAdapter = ArrayAdapter(context!!, R.layout.dropdown_menu_popup_item, Severity.values())
+        val issuesAdapter = ArrayAdapter(context!!, R.layout.dropdown_menu_popup_item, issues)
+        val contractorsAdapter = ArrayAdapter(context!!, R.layout.dropdown_menu_popup_item, contractors.sorted())
+
+        val auto_trade: AutoCompleteTextView = view!!.findViewById(R.id.trade_spinner)
+        auto_trade.setAdapter(tradeAdapter)
+
+        val auto_contractor: AutoCompleteTextView = view!!.findViewById(R.id.contractor_spinner)
+        auto_contractor.setAdapter(contractorsAdapter)
+
+        val auto_issue: AutoCompleteTextView = view!!.findViewById(R.id.issue_spinner)
+        auto_issue.setAdapter(issuesAdapter)
+
+        val auto_condition: AutoCompleteTextView = view!!.findViewById(R.id.condition_spinner)
+        auto_condition.setAdapter(conditionsAdapter)
+
+        val auto_severity: AutoCompleteTextView = view!!.findViewById(R.id.severity_spinner)
+        auto_severity.setAdapter(severityAdapter)
+
     }
 
     //  function to check for empty text
     private fun checkFields(): Boolean {
-        if (trade_spinner.selectedItem == ""){
-            trade_text.setTextColor(resources.getColor(R.color.errorColor, resources.newTheme()))
-            return false
+
+        var noErrors = true
+        var textInputs = listOf<TextInputLayout>(trade_text, contractor_text, issue_text, condition_text, severity_text, action_text)
+        for (textInputLayout in textInputs)
+        {
+            if (textInputLayout.editText?.text.toString().isEmpty())
+            {
+                textInputLayout.error = resources.getString(R.string.error_string)
+                noErrors = false
+            }
+            else
+            {
+                textInputLayout.error = null
+            }
         }
-        else{
-            trade_text.setTextColor(resources.getColor(R.color.primary_material_dark, resources.newTheme()))
-        }
-        if (contractor_spinner.selectedItem == ""){
-            contractor_text.setTextColor(resources.getColor(R.color.errorColor, resources.newTheme()))
-            return false
-        }
-        else{
-            contractor_text.setTextColor(resources.getColor(R.color.primary_material_dark, resources.newTheme()))
-        }
-        if (issue_spinner.selectedItem == ""){
-            issue_text.setTextColor(resources.getColor(R.color.errorColor, resources.newTheme()))
-            return false
-        }
-        else{
-            issue_text.setTextColor(resources.getColor(R.color.primary_material_dark, resources.newTheme()))
-        }
-        if (condition_spinner.selectedItem == ""){
-            condition_text.setTextColor(resources.getColor(R.color.errorColor, resources.newTheme()))
-            return false
-        }
-        else{
-            condition_text.setTextColor(resources.getColor(R.color.primary_material_dark, resources.newTheme()))
-        }
-        if (actionTaken_editText.text.toString() == ""){
-            action_text.setTextColor(resources.getColor(R.color.errorColor, resources.newTheme()))
-            return false
-        }
-        else{
-            action_text.setTextColor(resources.getColor(R.color.primary_material_dark, resources.newTheme()))
-        }
-        return true
+
+        return noErrors
     }
 
 }

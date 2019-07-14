@@ -5,8 +5,6 @@
         android:id="@+id/dateEntryMenuItem"
         android:enabled="false"
         android:icon="@drawable/baseline_input_24"
-        android:iconTint="@color/colorPrimaryDark"
-        android:iconTintMode="src_over"
         android:title="@string/menu_data_entry"
         android:visible="true" />
 
@@ -14,8 +12,6 @@
         android:id="@+id/dataDisplayMenuItem"
         android:enabled="true"
         android:icon="@drawable/baseline_view_list_24"
-        android:iconTint="@color/colorPrimaryDark"
-        android:iconTintMode="src_over"
         android:title="@string/menu_data_display"
         android:visible="true" />
 

@@ -5,217 +5,165 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     tools:context=".ObservationFragment">
-<androidx.constraintlayout.widget.ConstraintLayout
-    android:id="@+id/main_layout"
-    android:layout_width="match_parent"
-    android:layout_height="wrap_content">
 
-    <TextView
-        android:id="@+id/header_text"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="16dp"
-        android:layout_marginTop="16dp"
-        android:text="@string/site_manager_observation"
-        android:textAppearance="?android:attr/textAppearanceLarge"
-        android:textColor="@color/colorPrimaryDark"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
-
-    <TextView
-        android:id="@+id/trade_text"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="16dp"
-        android:layout_marginTop="16dp"
-        android:text="@string/trade"
-        android:textColor="@color/colorPrimaryDark"
-        android:textAppearance="?android:attr/textAppearanceMedium"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/header_text" />
-
-    <Spinner
-        android:id="@+id/trade_spinner"
+    <LinearLayout
+        android:id="@+id/main_layout"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_marginStart="16dp"
-        android:layout_marginTop="8dp"
-        android:layout_marginEnd="16dp"
-        android:textAlignment="viewStart"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/trade_text" />
+        android:layout_margin="16dp"
+        android:orientation="vertical">
 
-    <TextView
-        android:id="@+id/contractor_text"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="16dp"
-        android:layout_marginTop="16dp"
-        android:text="@string/subcontractor"
-        android:textColor="@color/colorPrimaryDark"
-        android:textAppearance="?android:attr/textAppearanceMedium"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/trade_spinner" />
+        <TextView
+            android:id="@+id/header_text"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="16dp"
+            android:layout_marginTop="16dp"
+            android:text="@string/site_manager_observation"
+            android:textAppearance="?android:attr/textAppearanceLarge"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
 
-    <Spinner
-        android:id="@+id/contractor_spinner"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="16dp"
-        android:layout_marginTop="8dp"
-        android:layout_marginEnd="16dp"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/contractor_text" />
+        <com.google.android.material.textfield.TextInputLayout
+            android:id="@+id/trade_text"
+            style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox.ExposedDropdownMenu"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            app:errorTextColor="@color/colorError"
+            android:hint="@string/trade">
 
-    <TextView
-        android:id="@+id/issue_text"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="16dp"
-        android:layout_marginTop="16dp"
-        android:text="@string/issue"
-        android:textColor="@color/colorPrimaryDark"
-        android:textAppearance="?android:attr/textAppearanceMedium"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/contractor_spinner" />
+            <AutoCompleteTextView
+                android:id="@+id/trade_spinner"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content" />
 
-    <Spinner
-        android:id="@+id/issue_spinner"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="16dp"
-        android:layout_marginTop="8dp"
-        android:layout_marginEnd="16dp"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/issue_text" />
+        </com.google.android.material.textfield.TextInputLayout>
 
-    <TextView
-        android:id="@+id/severity_text"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="16dp"
-        android:layout_marginTop="16dp"
-        android:text="@string/severity"
-        android:textColor="@color/colorPrimaryDark"
-        android:textAppearance="?android:attr/textAppearanceMedium"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/issue_spinner" />
+        <com.google.android.material.textfield.TextInputLayout
+            android:id="@+id/contractor_text"
+            style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox.ExposedDropdownMenu"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            app:errorTextColor="@color/colorError"
+            android:hint="@string/subcontractor">
 
-    <Spinner
-        android:id="@+id/severity_spinner"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="16dp"
-        android:layout_marginTop="8dp"
-        android:layout_marginEnd="16dp"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/severity_text" />
+            <AutoCompleteTextView
+                android:id="@+id/contractor_spinner"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content" />
 
-    <TextView
-        android:id="@+id/condition_text"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="16dp"
-        android:layout_marginTop="16dp"
-        android:text="@string/condition"
-        android:textColor="@color/colorPrimaryDark"
-        android:textAppearance="?android:attr/textAppearanceMedium"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/severity_spinner" />
+        </com.google.android.material.textfield.TextInputLayout>
 
-    <Spinner
-        android:id="@+id/condition_spinner"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="16dp"
-        android:layout_marginTop="8dp"
-        android:layout_marginEnd="16dp"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/condition_text" />
+        <com.google.android.material.textfield.TextInputLayout
+            android:id="@+id/issue_text"
+            style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox.ExposedDropdownMenu"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            app:errorTextColor="@color/colorError"
+            android:hint="@string/issue">
 
-    <TextView
-        android:id="@+id/action_text"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="16dp"
-        android:layout_marginTop="16dp"
-        android:text="@string/action_taken"
-        android:textColor="@color/colorPrimaryDark"
-        android:textAppearance="?android:attr/textAppearanceMedium"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/condition_spinner" />
+            <AutoCompleteTextView
+                android:id="@+id/issue_spinner"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content" />
 
-    <EditText
-        android:id="@+id/actionTaken_editText"
-        android:layout_width="match_parent"
-        android:layout_height="100dp"
-        android:layout_marginStart="16dp"
-        android:layout_marginTop="16dp"
-        android:layout_marginEnd="16dp"
-        android:hint="@string/enter_action_taken"
-        android:importantForAutofill="no"
-        android:inputType="textMultiLine"
-        android:scrollbarStyle="outsideInset"
-        android:scrollbars="vertical"
-        android:textColor="@color/colorPrimaryDark"
-        android:textAppearance="?android:attr/textAppearanceMedium"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/action_text" />
+        </com.google.android.material.textfield.TextInputLayout>
 
-    <Button
-        android:id="@+id/save_button"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="16dp"
-        android:layout_marginTop="16dp"
-        android:background="@color/colorPrimary"
-        android:paddingStart="4dp"
-        android:paddingLeft="4dp"
-        android:paddingEnd="4dp"
-        android:paddingRight="4dp"
-        android:text="@string/save"
-        android:textColor="@color/colorAccent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/actionTaken_editText" />
+        <com.google.android.material.textfield.TextInputLayout
+            android:id="@+id/severity_text"
+            style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox.ExposedDropdownMenu"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            app:errorTextColor="@color/colorError"
+            android:hint="@string/severity">
 
-    <Button
-        android:id="@+id/save_new_button"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="16dp"
-        android:layout_marginTop="16dp"
-        android:background="@color/colorPrimary"
-        android:paddingStart="4dp"
-        android:paddingLeft="4dp"
-        android:paddingEnd="4dp"
-        android:paddingRight="4dp"
-        android:text="@string/save_and_new"
-        android:textColor="@color/colorAccent"
-        app:layout_constraintStart_toEndOf="@+id/save_button"
-        app:layout_constraintTop_toBottomOf="@+id/actionTaken_editText" />
+            <AutoCompleteTextView
+                android:id="@+id/severity_spinner"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content" />
 
-    <Button
-        android:id="@+id/cancel_button"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="16dp"
-        android:layout_marginTop="16dp"
-        android:background="@color/colorPrimary"
-        android:paddingStart="4dp"
-        android:paddingLeft="4dp"
-        android:paddingEnd="4dp"
-        android:paddingRight="4dp"
-        android:text="@string/cancel"
-        android:textColor="@color/colorAccent"
-        app:layout_constraintStart_toEndOf="@id/save_new_button"
-        app:layout_constraintTop_toBottomOf="@+id/actionTaken_editText" />
+        </com.google.android.material.textfield.TextInputLayout>
+
+        <com.google.android.material.textfield.TextInputLayout
+            android:id="@+id/condition_text"
+            style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox.ExposedDropdownMenu"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            app:errorTextColor="@color/colorError"
+            android:hint="@string/condition">
+
+            <AutoCompleteTextView
+                android:id="@+id/condition_spinner"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content" />
+
+        </com.google.android.material.textfield.TextInputLayout>
+
+        <com.google.android.material.textfield.TextInputLayout
+            android:id="@+id/action_text"
+            style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="12dp"
+            app:hintTextAppearance="?attr/textAppearanceSubtitle1"
+            app:errorTextColor="@color/colorError"
+            android:hint="@string/action_taken">
+
+            <com.google.android.material.textfield.TextInputEditText
+                android:id="@+id/actionTaken_editText"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content" />
+
+        </com.google.android.material.textfield.TextInputLayout>
 
 
-</androidx.constraintlayout.widget.ConstraintLayout>
+        <LinearLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="12dp"
+            android:orientation="horizontal">
+
+            <com.google.android.material.button.MaterialButton
+                android:id="@+id/save_button"
+                style="@style/Widget.MaterialComponents.Button"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="16dp"
+                android:layout_marginTop="16dp"
+                android:paddingStart="4dp"
+                android:paddingLeft="4dp"
+                android:paddingEnd="4dp"
+                android:paddingRight="4dp"
+                android:text="@string/save" />
+
+            <com.google.android.material.button.MaterialButton
+                android:id="@+id/save_new_button"
+                style="@style/Widget.MaterialComponents.Button"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="16dp"
+                android:layout_marginTop="16dp"
+                android:paddingStart="4dp"
+                android:paddingLeft="4dp"
+                android:paddingEnd="4dp"
+                android:paddingRight="4dp"
+                android:text="@string/save_and_new" />
+
+            <com.google.android.material.button.MaterialButton
+                android:id="@+id/cancel_button"
+                style="@style/Widget.MaterialComponents.Button"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="16dp"
+                android:layout_marginTop="16dp"
+                android:paddingStart="4dp"
+                android:paddingLeft="4dp"
+                android:paddingEnd="4dp"
+                android:paddingRight="4dp"
+                android:text="@string/cancel" />
+
+        </LinearLayout>
+
+
+    </LinearLayout>
 </ScrollView>

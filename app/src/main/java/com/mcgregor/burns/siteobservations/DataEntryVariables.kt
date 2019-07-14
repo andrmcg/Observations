@@ -21,7 +21,7 @@ val trades = listOf<String>("","Bricklayer", "Cala", "Cleaners", "Demolition", "
     "Other", "Painting & Decorating", "Piling", "Plasterer / Dryliner", "Plumbing", "Roof Tiler",
     "Roofer", "Roughcastng / Render", "Scaffolding", "Site Security", "Steelworker", "Tiler",
     "Traffic management", "Utilities", "Wardrobe", "Window Fitter"
-)
+).sorted()
 
 val issues = listOf<String>("","Access / Egress - Inadequate",
     "Access / Egress - Plot Access",

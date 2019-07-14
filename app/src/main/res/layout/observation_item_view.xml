@@ -1,8 +1,9 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.cardview.widget.CardView xmlns:android="http://schemas.android.com/apk/res/android"
+<com.google.android.material.card.MaterialCardView xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:id="@+id/cardView"
+    style="@style/Widget.MaterialComponents.CardView"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
     android:layout_margin="12dp"
@@ -15,23 +16,20 @@
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:orientation="vertical"
-        android:background="@color/colorPrimaryDark"
         android:padding="6dp">
 
         <TextView
             android:id="@+id/contractorText"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:textAppearance="?android:attr/textAppearanceLarge"
-            android:textColor="@color/primaryText"
+            android:textAppearance="?attr/textAppearanceHeadline4"
             tools:text="Contractor" />
 
         <TextView
             android:id="@+id/issueText"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:textColor="@color/primaryText"
-            android:textAppearance="?android:attr/textAppearanceMedium"
+            android:textAppearance="?attr/textAppearanceHeadline6"
             tools:text="Issue" />
 
         <LinearLayout
@@ -43,8 +41,7 @@
                 android:id="@+id/conditionText"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:textAppearance="?android:attr/textAppearanceMedium"
-                android:textColor="@color/primaryText"
+                android:textAppearance="?attr/textAppearanceSubtitle1"
                 tools:text="Condition" />
 
             <TextView
@@ -55,25 +52,27 @@
                 android:paddingEnd="6dp"
                 android:textAlignment="viewEnd"
                 android:textColor="@color/colorAccent"
+                android:textAppearance="?attr/textAppearanceSubtitle2"
                 android:textStyle="bold"
                 tools:text="Severity" />
 
         </LinearLayout>
+
+        <View
+            android:layout_width="match_parent"
+            android:layout_height="1dp" android:layout_marginTop="6dp" android:background="@color/colorPrimary"/>
 
         <TextView
             android:id="@+id/actionText"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginTop="6dp"
-            android:background="@color/colorPrimary"
             android:padding="2dp"
-            android:shadowColor="@color/colorPrimaryDark"
             android:shadowRadius="6"
             android:textAlignment="gravity"
-            android:textAppearance="?android:attr/textAppearanceMedium"
-            android:textColor="@color/primaryText"
+            android:textAppearance="?attr/textAppearanceBody1"
             tools:text="Contractor to hold toolbox talk and operative given a final warning" />
 
     </LinearLayout>
 
-</androidx.cardview.widget.CardView>
+</com.google.android.material.card.MaterialCardView>
