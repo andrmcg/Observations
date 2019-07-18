@@ -1,6 +1,7 @@
 package com.mcgregor.burns.siteobservations
 
 
+import android.content.DialogInterface
 import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
@@ -12,6 +13,7 @@ import androidx.navigation.NavController
 import androidx.navigation.fragment.findNavController
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
+import com.google.android.material.dialog.MaterialAlertDialogBuilder
 import com.mcgregor.burns.siteobservations.adapters.ObservationsAdapter
 import com.mcgregor.burns.siteobservations.data.ObservationViewModel
 import entities.Observation
@@ -64,14 +66,43 @@ class DisplayObservationsFragment : Fragment(), View.OnLongClickListener {
     }
 
     override fun onLongClick(v: View?): Boolean {
-        var viewHolder = v?.tag as RecyclerView.ViewHolder
+
+        var dialog = MaterialAlertDialogBuilder(context!!).apply {
+            setTitle("Delete Observation")
+            setMessage("Do you want to delete this Observation?")
+            setPositiveButton("Ok", DialogInterface.OnClickListener { di, i ->
+                var viewHolder = v?.tag as RecyclerView.ViewHolder
+                deleteObservation(viewHolder)
+            })
+
+            setNegativeButton("Cancel", DialogInterface.OnClickListener { di, i ->
+
+            })
+
+            show()
+        }
+
+        /*var viewHolder = v?.tag as RecyclerView.ViewHolder
         if (observations.isNotEmpty()) {
             val position = viewHolder.adapterPosition
             observationViewModel.delete(observations.get(position))
             observationAdapter.notifyItemRemoved(position)
             return true
         }
-        else return false
+        else return false*/
+
+        return true
+
+    }
+
+    private fun deleteObservation(viewHolder: RecyclerView.ViewHolder)
+    {
+        if (observations.isNotEmpty())
+        {
+            val position = viewHolder.adapterPosition
+            observationViewModel.delete(observations.get(position))
+            observationAdapter.notifyItemRemoved(position)
+        }
     }
 
 

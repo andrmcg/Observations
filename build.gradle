@@ -4,7 +4,7 @@ buildscript {
 
     ext {
         lifecycle_version = '2.2.0-alpha02'
-        room_version = '2.1.0'
+        room_version = '2.2.0-alpha01'
         coroutines = '1.1.1'
     }
 
