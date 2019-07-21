@@ -68,15 +68,14 @@ class DisplayObservationsFragment : Fragment(), View.OnLongClickListener {
     override fun onLongClick(v: View?): Boolean {
 
         var dialog = MaterialAlertDialogBuilder(context!!).apply {
-            setTitle("Delete Observation")
-            setMessage("Do you want to delete this Observation?")
-            setPositiveButton("Ok", DialogInterface.OnClickListener { di, i ->
+            setTitle(getString(R.string.dialogTitleText))
+            setMessage(getString(R.string.dialogMessageText))
+            setPositiveButton(getString(R.string.dialogOkButtonText), DialogInterface.OnClickListener { _, _ ->
                 var viewHolder = v?.tag as RecyclerView.ViewHolder
                 deleteObservation(viewHolder)
             })
-
-            setNegativeButton("Cancel", DialogInterface.OnClickListener { di, i ->
-
+            setNegativeButton(getString(R.string.dialogNegativeButtonText), DialogInterface.OnClickListener { di, _ ->
+                di.dismiss()
             })
 
             show()

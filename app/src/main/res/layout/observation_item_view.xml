@@ -15,8 +15,7 @@
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:orientation="vertical"
-        android:padding="6dp">
+        android:orientation="vertical" >
 
         <TextView
             android:id="@+id/contractorText"
@@ -60,8 +59,11 @@
 
         <View
             android:layout_width="match_parent"
-            android:layout_height="1dp" android:layout_marginTop="6dp" android:background="@color/colorPrimary"/>
+            android:layout_height="1dp" android:layout_marginTop="6dp" android:background="#dddddd"/>
 
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent" android:orientation="vertical">
         <TextView
             android:id="@+id/actionText"
             android:layout_width="match_parent"
@@ -72,6 +74,7 @@
             android:textAlignment="gravity"
             android:textAppearance="?attr/textAppearanceBody1"
             tools:text="Contractor to hold toolbox talk and operative given a final warning" />
+        </LinearLayout>
 
     </LinearLayout>
 
