@@ -7,7 +7,7 @@
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
     android:layout_margin="12dp"
-    android:elevation="12dp"
+    android:checkable="false"
     app:cardCornerRadius="12dp"
     app:cardElevation="12dp"
     app:layout_insetEdge="bottom">
@@ -20,7 +20,7 @@
         <TextView
             android:id="@+id/contractorText"
             android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
+            android:layout_height="34dp"
             android:paddingLeft="6dp"
             android:paddingRight="6dp"
             android:textAppearance="?attr/textAppearanceHeadline6"
@@ -54,6 +54,7 @@
                 android:layout_height="wrap_content"
                 android:textAlignment="viewEnd"
                 android:textAppearance="?attr/textAppearanceSubtitle2"
+                android:textColor="@color/colorSecondaryVariant"
                 android:textStyle="bold"
                 tools:text="Severity" />
 
@@ -62,26 +63,31 @@
         <View
             android:layout_width="match_parent"
             android:layout_height="2dp"
-            android:layout_marginTop="6dp" />
+            android:layout_marginTop="6dp"
+            android:background="@color/colorSecondaryVariant" />
 
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="match_parent"
             android:layout_marginTop="2dp"
+            android:background="@color/colorPrimary"
+            android:minHeight="68dp"
             android:orientation="vertical"
             android:padding="6dp">
 
-            <TextView
+            <com.google.android.material.textview.MaterialTextView
                 android:id="@+id/actionText"
+                style="@style/Widget.MaterialComponents.TextView"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:paddingLeft="6dp"
                 android:paddingRight="6dp"
                 android:shadowRadius="6"
+                android:text="@string/action_text_placeholder_text"
                 android:textAlignment="gravity"
-                android:textAppearance="?attr/textAppearanceBody2"
-                android:textColor="#ffffff"
-                tools:text="Contractor to hold toolbox talk and operative given a final warning" />
+                android:textAppearance="@style/TextAppearance.MaterialComponents.Subtitle1"
+                android:textColor="@color/colorSecondary" />
+
         </LinearLayout>
 
     </LinearLayout>

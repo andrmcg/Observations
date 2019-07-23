@@ -30,8 +30,8 @@
             style="@style/Widget.MaterialComponents.BottomNavigationView"
             android:layout_width="match_parent"
             android:layout_height="60dp"
-            android:background="@color/colorPrimaryDark"
-            app:itemIconTint="@color/colorSecondaryVariant"
+            android:background="@color/colorPrimary"
+            app:itemIconTint="@color/colorSecondary"
             app:itemTextColor="@color/colorOnPrimary"
             app:menu="@menu/menu_bottom_nav" />
 

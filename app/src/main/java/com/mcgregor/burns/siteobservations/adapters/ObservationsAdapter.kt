@@ -5,6 +5,7 @@ import android.view.View
 import android.view.ViewGroup
 import android.widget.TextView
 import androidx.recyclerview.widget.RecyclerView
+import com.google.android.material.textview.MaterialTextView
 import com.mcgregor.burns.siteobservations.R
 import entities.Observation
 
@@ -51,7 +52,8 @@ class ObservationsAdapter(observations:List<Observation>): RecyclerView.Adapter<
         var issueText:TextView
         var conditionText: TextView
         var severityText: TextView
-        var actionText: TextView
+        //var actionText: TextView
+        var actionText: MaterialTextView
 
         init {
             contractorText = v.findViewById(R.id.contractorText)

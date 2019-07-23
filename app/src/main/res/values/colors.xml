@@ -7,12 +7,13 @@
 </resources>-->
 
 <resources>
-    <color name="colorPrimary">#37474f</color>
+    <color name="colorPrimary">#37474F</color>
     <color name="colorPrimaryDark">#102027</color>
+    <color name="colorPrimaryLight">#62727B</color>
     <color name="colorOnPrimary">#ffffff</color>
-    <color name="colorSecondary">#f06292</color>
-    <color name="colorSecondaryVariant">#ba2d65</color>
-    <color name="colorONSecondary">#000000</color>
+    <color name="colorSecondary">#FB8C00</color>
+    <color name="colorSecondaryVariant">#C25E00</color>
+    <color name="colorOnSecondary">#000000</color>
     <color name="colorError">#cc0000</color>
 </resources>
 

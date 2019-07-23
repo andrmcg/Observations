@@ -62,12 +62,12 @@ class DisplayObservationsFragment : Fragment(), View.OnLongClickListener {
             }
         })
 
-
     }
 
     override fun onLongClick(v: View?): Boolean {
 
         var dialog = MaterialAlertDialogBuilder(context!!).apply {
+            this.setIcon(R.drawable.twotone_delete_24)
             setTitle(getString(R.string.dialogTitleText))
             setMessage(getString(R.string.dialogMessageText))
             setPositiveButton(getString(R.string.dialogOkButtonText), DialogInterface.OnClickListener { _, _ ->
