@@ -2,6 +2,7 @@ package com.mcgregor.burns.siteobservations
 
 
 import android.content.DialogInterface
+import android.content.Intent
 import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
@@ -61,6 +62,19 @@ class DisplayObservationsFragment : Fragment(), View.OnLongClickListener {
                 }
             }
         })
+
+        email_fab.setOnClickListener { v ->
+            var intent = Intent(Intent.ACTION_SEND).apply {
+                type = "text/plain"
+                putExtra(Intent.EXTRA_EMAIL, "anmcgregor@cala.co.uk")
+                putExtra(Intent.EXTRA_SUBJECT, "Observations")
+                observations.forEach {
+                    putExtra(Intent.EXTRA_TEXT,it.trade.plus("\n").plus(it.subContractor).plus("\n").plus(it.issue)
+                        .plus("\n").plus(it.condition).plus("\n").plus(it.severity).plus("\n").plus(it.actionTaken))
+                }
+            }
+            startActivity(intent)
+        }
 
     }
 
