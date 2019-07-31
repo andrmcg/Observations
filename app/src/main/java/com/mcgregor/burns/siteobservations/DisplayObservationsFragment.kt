@@ -3,6 +3,7 @@ package com.mcgregor.burns.siteobservations
 
 import android.content.DialogInterface
 import android.content.Intent
+import android.net.Uri
 import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
@@ -15,6 +16,8 @@ import androidx.navigation.fragment.findNavController
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.google.android.material.dialog.MaterialAlertDialogBuilder
+import com.google.android.material.snackbar.BaseTransientBottomBar
+import com.google.android.material.snackbar.Snackbar
 import com.mcgregor.burns.siteobservations.adapters.ObservationsAdapter
 import com.mcgregor.burns.siteobservations.data.ObservationViewModel
 import entities.Observation
@@ -64,18 +67,43 @@ class DisplayObservationsFragment : Fragment(), View.OnLongClickListener {
         })
 
         email_fab.setOnClickListener { v ->
-            var intent = Intent(Intent.ACTION_SEND).apply {
-                type = "text/plain"
-                putExtra(Intent.EXTRA_EMAIL, "anmcgregor@cala.co.uk")
-                putExtra(Intent.EXTRA_SUBJECT, "Observations")
-                observations.forEach {
-                    putExtra(Intent.EXTRA_TEXT,it.trade.plus("\n").plus(it.subContractor).plus("\n").plus(it.issue)
-                        .plus("\n").plus(it.condition).plus("\n").plus(it.severity).plus("\n").plus(it.actionTaken))
+            try {
+                if (observations.isNotEmpty())
+                {
+                    composeEmail(observations)
+                    navController.navigate(R.id.observationFragment)
+                }
+                else
+                {
+                    showSnackBar(v)
                 }
             }
-            startActivity(intent)
+            catch (err: UninitializedPropertyAccessException) {
+                showSnackBar(v)
+            }
+
         }
 
+    }
+
+    private fun showSnackBar(v: View?) {
+        Snackbar.make(v!!, "No observations to email",
+            BaseTransientBottomBar.LENGTH_LONG).show()
+    }
+
+    private fun composeEmail(observations: List<Observation>) {
+        var emailText: StringBuilder = StringBuilder()
+        observations.forEach {
+            emailText.append(it.trade.plus("\n${it.subContractor}\n${it.issue}\n${it.severity}\n${it.condition}\n${it.actionTaken}\n\n"))
+        }
+        var addresses = arrayOf("andrmcg@btinternet.com")
+        val intent = Intent(Intent.ACTION_SENDTO).apply {
+            data = Uri.parse("mailto:")
+            putExtra(Intent.EXTRA_EMAIL, addresses)
+            putExtra(Intent.EXTRA_SUBJECT, "Observations")
+            putExtra(Intent.EXTRA_TEXT, emailText.toString())
+        }
+        startActivity(intent)
     }
 
     override fun onLongClick(v: View?): Boolean {
@@ -114,7 +142,9 @@ class DisplayObservationsFragment : Fragment(), View.OnLongClickListener {
         {
             val position = viewHolder.adapterPosition
             observationViewModel.delete(observations.get(position))
+            (observations as ArrayList).removeAt(position)
             observationAdapter.notifyItemRemoved(position)
+            observationAdapter.notifyDataSetChanged()
         }
     }
 
