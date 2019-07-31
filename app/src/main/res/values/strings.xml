@@ -8,18 +8,13 @@
     <string name="trade">Trade:</string>
     <string name="action_taken">Action Taken:</string>
     <string name="save">save</string>
-    <string name="save_and_new">save and new</string>
-    <string name="cancel">cancel</string>
-    <string name="enter_action_taken">Enter Action Taken</string>
+    <string name="save_and_new">Save and New</string>
 
-    <!-- TODO: Remove or change this placeholder text -->
-    <string name="hello_blank_fragment">Hello blank fragment</string>
+
     <string name="menu_data_entry">Enter Observation</string>
     <string name="menu_data_display">Display Observations</string>
     <string name="error_string">Field must not be empty.</string>
     <string name="dialogTitleText">Delete Observation</string>
     <string name="dialogMessageText">Do you want to delete this Observation?</string>
-    <string name="dialogOkButtonText">Ok</string>
-    <string name="dialogNegativeButtonText">Cancel</string>
     <string name="action_text_placeholder_text">Contractor to hold toolbox talk and operative given a final warning</string>
 </resources>

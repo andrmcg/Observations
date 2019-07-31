@@ -59,7 +59,7 @@ abstract class ObservationsDatabase : RoomDatabase() {
 
         /*private fun populateDatabase(dao: ObservationsDao, ctx: Context) {
 
-            //TODO code to poulate database
+            // code to poulate database
             //var ob = Observation("Groundworker","Akela","Shite",Severity.High.name, "Poor","Get Rid")
             //dao.insert(ob)
 

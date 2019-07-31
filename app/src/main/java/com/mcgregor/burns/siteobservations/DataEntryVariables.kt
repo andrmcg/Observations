@@ -8,14 +8,14 @@ enum class Severity {
 
 var observationViewModel: ObservationViewModel? = null
 
-val conditions = listOf<String>("","unsafe Act", "Unsafe Condition", "Near miss", "Significant Near Miss")
+val conditions = listOf("","unsafe Act", "Unsafe Condition", "Near miss", "Significant Near Miss")
 
-val contractors: List<String> = listOf<String>("","Akela", "Bunyand and Bell", "Dovend", "Turner Access", "Marley", "Kelvin", "Tilecraft",
+val contractors: List<String> = listOf("","Akela", "Bunyand and Bell", "Dovend", "Turner Access", "Marley", "Kelvin", "Tilecraft",
     "Tclarke", "Pbr", "A Boyd", "Bricklayers", "KS Windows", "Universal", "Voltaire", "Landscape Design", "B2B Flooring",
     "Jdr", "Energy Assets", "Apex", "SG Pro"
 )
 
-val trades = listOf<String>("","Bricklayer", "Cala", "Cleaners", "Demolition", "Electricity / Services",
+val trades = listOf("","Bricklayer", "Cala", "Cleaners", "Demolition", "Electricity / Services",
     "Fencing", "Flooring", "General Builder", "Groundworker", "Housekeeping", "Insulation",
     "Joiner / Carpenter", "Kit / Timber Frame", "Kitchen", "Landscaper", "Lift", "Mastic",
     "Other", "Painting & Decorating", "Piling", "Plasterer / Dryliner", "Plumbing", "Roof Tiler",
@@ -23,7 +23,7 @@ val trades = listOf<String>("","Bricklayer", "Cala", "Cleaners", "Demolition", "
     "Traffic management", "Utilities", "Wardrobe", "Window Fitter"
 ).sorted()
 
-val issues = listOf<String>("","Access / Egress - Inadequate",
+val issues = listOf("","Access / Egress - Inadequate",
     "Access / Egress - Plot Access",
     "Access / Egress - Temp Stairs / Handrail",
     "Electrical - Generally Unsafe",

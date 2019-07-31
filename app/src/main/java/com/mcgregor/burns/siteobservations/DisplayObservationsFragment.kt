@@ -1,7 +1,6 @@
 package com.mcgregor.burns.siteobservations
 
 
-import android.content.DialogInterface
 import android.content.Intent
 import android.net.Uri
 import android.os.Bundle
@@ -92,11 +91,11 @@ class DisplayObservationsFragment : Fragment(), View.OnLongClickListener {
     }
 
     private fun composeEmail(observations: List<Observation>) {
-        var emailText: StringBuilder = StringBuilder()
+        val emailText: StringBuilder = StringBuilder()
         observations.forEach {
             emailText.append(it.trade.plus("\n${it.subContractor}\n${it.issue}\n${it.severity}\n${it.condition}\n${it.actionTaken}\n\n"))
         }
-        var addresses = arrayOf("andrmcg@btinternet.com")
+        val addresses = arrayOf("andrmcg@btinternet.com")
         val intent = Intent(Intent.ACTION_SENDTO).apply {
             data = Uri.parse("mailto:")
             putExtra(Intent.EXTRA_EMAIL, addresses)
@@ -112,11 +111,11 @@ class DisplayObservationsFragment : Fragment(), View.OnLongClickListener {
             this.setIcon(R.drawable.twotone_delete_24)
             setTitle(getString(R.string.dialogTitleText))
             setMessage(getString(R.string.dialogMessageText))
-            setPositiveButton(getString(R.string.dialogOkButtonText), DialogInterface.OnClickListener { _, _ ->
-                var viewHolder = v?.tag as RecyclerView.ViewHolder
+            setPositiveButton(getString(android.R.string.ok), { _, _ ->
+                val viewHolder = v?.tag as RecyclerView.ViewHolder
                 deleteObservation(viewHolder)
             })
-            setNegativeButton(getString(R.string.dialogNegativeButtonText), DialogInterface.OnClickListener { di, _ ->
+            setNegativeButton(getString(android.R.string.cancel), { di, _ ->
                 di.dismiss()
             })
 
@@ -141,7 +140,7 @@ class DisplayObservationsFragment : Fragment(), View.OnLongClickListener {
         if (observations.isNotEmpty())
         {
             val position = viewHolder.adapterPosition
-            observationViewModel.delete(observations.get(position))
+            observationViewModel.delete(observations[position])
             (observations as ArrayList).removeAt(position)
             observationAdapter.notifyItemRemoved(position)
             observationAdapter.notifyDataSetChanged()

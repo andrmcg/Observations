@@ -11,16 +11,11 @@ import entities.Observation
 
 class ObservationsAdapter(observations:List<Observation>): RecyclerView.Adapter<ObservationsAdapter.MyViewHolder>() {
 
-    private var _observations: List<Observation>
+    private var _observations: List<Observation> = observations
 
     private lateinit var mClickListener: View.OnLongClickListener
 
-    init {
-        _observations = observations
-
-    }
-
-    public fun setOnLongItemClickListener(itemClickListener: View.OnLongClickListener)
+    fun setOnLongItemClickListener(itemClickListener: View.OnLongClickListener)
     {
         mClickListener = itemClickListener
     }
@@ -36,11 +31,11 @@ class ObservationsAdapter(observations:List<Observation>): RecyclerView.Adapter<
     }
 
     override fun onBindViewHolder(holder: MyViewHolder, position: Int) {
-        holder.contractorText.text = _observations.get(position).subContractor
-        holder.issueText.text = _observations.get(position).issue
-        holder.conditionText.text = _observations.get(position).condition
-        holder.severityText.text = _observations.get(position).severity
-        holder.actionText.text = _observations.get(position).actionTaken
+        holder.contractorText.text = _observations[position].subContractor
+        holder.issueText.text = _observations[position].issue
+        holder.conditionText.text = _observations[position].condition
+        holder.severityText.text = _observations[position].severity
+        holder.actionText.text = _observations[position].actionTaken
 
     }
 
@@ -48,7 +43,7 @@ class ObservationsAdapter(observations:List<Observation>): RecyclerView.Adapter<
     inner class MyViewHolder(v: View): RecyclerView.ViewHolder(v)
     {
 
-        var contractorText:TextView
+        var contractorText:TextView = v.findViewById(R.id.contractorText)
         var issueText:TextView
         var conditionText: TextView
         var severityText: TextView
@@ -56,7 +51,6 @@ class ObservationsAdapter(observations:List<Observation>): RecyclerView.Adapter<
         var actionText: MaterialTextView
 
         init {
-            contractorText = v.findViewById(R.id.contractorText)
             issueText = v.findViewById(R.id.issueText)
             conditionText = v.findViewById(R.id.conditionText)
             severityText = v.findViewById(R.id.severityText)

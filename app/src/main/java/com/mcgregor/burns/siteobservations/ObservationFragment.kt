@@ -53,9 +53,9 @@ class ObservationFragment : Fragment() {
 
     private fun setUpButtons() {
 
-        save_button.setOnClickListener { _ ->
+        save_button.setOnClickListener {
             if (checkFields()) {
-                var obs = Observation().apply {
+                val obs = Observation().apply {
                     trade = trade_text.editText?.text.toString()
                     subContractor = contractor_text.editText?.text.toString()
                     issue = issue_text.editText?.text.toString()
@@ -68,9 +68,9 @@ class ObservationFragment : Fragment() {
             }
         }
 
-        save_new_button.setOnClickListener { _ ->
+        save_new_button.setOnClickListener {
             if (checkFields()) {
-                var obs = Observation().apply {
+                val obs = Observation().apply {
                     trade = trade_text.editText?.text.toString()
                     subContractor = contractor_text.editText?.text.toString()
                     issue = issue_text.editText?.text.toString()
@@ -85,7 +85,7 @@ class ObservationFragment : Fragment() {
             }
         }
 
-        cancel_button.setOnClickListener { _ ->
+        cancel_button.setOnClickListener {
             clearFields()
         }
 
@@ -108,20 +108,20 @@ class ObservationFragment : Fragment() {
         val issuesAdapter = ArrayAdapter(context!!, R.layout.dropdown_menu_popup_item, issues)
         val contractorsAdapter = ArrayAdapter(context!!, R.layout.dropdown_menu_popup_item, contractors.sorted())
 
-        val auto_trade: AutoCompleteTextView = view!!.findViewById(R.id.trade_spinner)
-        auto_trade.setAdapter(tradeAdapter)
+        val autoTrade: AutoCompleteTextView = view!!.findViewById(R.id.trade_spinner)
+        autoTrade.setAdapter(tradeAdapter)
 
-        val auto_contractor: AutoCompleteTextView = view!!.findViewById(R.id.contractor_spinner)
-        auto_contractor.setAdapter(contractorsAdapter)
+        val autoContractor: AutoCompleteTextView = view!!.findViewById(R.id.contractor_spinner)
+        autoContractor.setAdapter(contractorsAdapter)
 
-        val auto_issue: AutoCompleteTextView = view!!.findViewById(R.id.issue_spinner)
-        auto_issue.setAdapter(issuesAdapter)
+        val autoIssue: AutoCompleteTextView = view!!.findViewById(R.id.issue_spinner)
+        autoIssue.setAdapter(issuesAdapter)
 
-        val auto_condition: AutoCompleteTextView = view!!.findViewById(R.id.condition_spinner)
-        auto_condition.setAdapter(conditionsAdapter)
+        val autoCondition: AutoCompleteTextView = view!!.findViewById(R.id.condition_spinner)
+        autoCondition.setAdapter(conditionsAdapter)
 
-        val auto_severity: AutoCompleteTextView = view!!.findViewById(R.id.severity_spinner)
-        auto_severity.setAdapter(severityAdapter)
+        val autoSeverity: AutoCompleteTextView = view!!.findViewById(R.id.severity_spinner)
+        autoSeverity.setAdapter(severityAdapter)
 
     }
 
@@ -129,7 +129,7 @@ class ObservationFragment : Fragment() {
     private fun checkFields(): Boolean {
 
         var noErrors = true
-        var textInputs = listOf<TextInputLayout>(trade_text, contractor_text, issue_text, condition_text, severity_text, action_text)
+        val textInputs = listOf<TextInputLayout>(trade_text, contractor_text, issue_text, condition_text, severity_text, action_text)
         for (textInputLayout in textInputs)
         {
             if (textInputLayout.editText?.text.toString().isEmpty())

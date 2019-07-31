@@ -2,7 +2,6 @@
 <navigation xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
-    android:id="@+id/nav_graph"
     app:startDestination="@id/observationFragment">
 
     <fragment
@@ -11,7 +10,6 @@
         android:label="observation_layout"
         tools:layout="@layout/observation_layout">
         <action
-            android:id="@+id/action_observationFragment_to_displayObservationsFragment2"
             app:destination="@id/displayObservationsFragment"
             app:popEnterAnim="@anim/nav_default_pop_enter_anim"
             app:popExitAnim="@anim/nav_default_pop_exit_anim"
@@ -23,7 +21,6 @@
         android:label="fragment_display_observations"
         tools:layout="@layout/fragment_display_observations">
         <action
-            android:id="@+id/action_displayObservationsFragment_to_observationFragment"
             app:destination="@id/observationFragment"
             app:popEnterAnim="@anim/nav_default_pop_enter_anim"
             app:popExitAnim="@anim/nav_default_pop_exit_anim"

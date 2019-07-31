@@ -38,7 +38,7 @@ class Observation {
     @ColumnInfo(name = "ActionTaken")
     var actionTaken: String = ""
 
-    constructor(){}
+    constructor()
 
 
     @Ignore

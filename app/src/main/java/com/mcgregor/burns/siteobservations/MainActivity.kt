@@ -1,7 +1,6 @@
 package com.mcgregor.burns.siteobservations
 
 import android.os.Bundle
-import android.view.MenuItem
 import androidx.appcompat.app.AppCompatActivity
 import androidx.navigation.NavController
 import androidx.navigation.findNavController
@@ -20,9 +19,8 @@ class MainActivity : AppCompatActivity() {
 
         navController = findNavController(R.id.nav_host_fragment)
 
-        navController.addOnDestinationChangedListener(NavController.OnDestinationChangedListener{c,_,_ ->
-            val destination = (c.currentDestination as FragmentNavigator.Destination).className
-            when(destination){
+        navController.addOnDestinationChangedListener({ c, _, _ ->
+            when((c.currentDestination as FragmentNavigator.Destination).className){
                 "com.mcgregor.burns.siteobservations.ObservationFragment" -> {
                     bottom_nav.menu.findItem(R.id.dateEntryMenuItem).isEnabled = false
                     bottom_nav.menu.findItem(R.id.dataDisplayMenuItem).isEnabled = true
@@ -36,13 +34,13 @@ class MainActivity : AppCompatActivity() {
 
         bottom_nav.setupWithNavController(navController)
         bottom_nav.menu.findItem(R.id.dateEntryMenuItem)
-            .setOnMenuItemClickListener(MenuItem.OnMenuItemClickListener { _ ->
+            .setOnMenuItemClickListener({
                 navController.navigate(R.id.observationFragment)
                 true
             })
 
         bottom_nav.menu.findItem(R.id.dataDisplayMenuItem)
-            .setOnMenuItemClickListener(MenuItem.OnMenuItemClickListener { _ ->
+            .setOnMenuItemClickListener({
                 navController.navigate(R.id.displayObservationsFragment)
                 true
             })
