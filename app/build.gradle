@@ -12,6 +12,14 @@ apply plugin: 'kotlin-kapt'
 
 
 android {
+    signingConfigs {
+        release {
+            storeFile file('C:\\Users\\burns\\Documents\\keystores\\upload_key.jks')
+            storePassword 'bo11ocks'
+            keyAlias = 'upload'
+            keyPassword 'bo11ocks'
+        }
+    }
     compileSdkVersion 29
     defaultConfig {
         applicationId "com.mcgregor.burns.siteobservations"
@@ -19,6 +27,7 @@ android {
         targetSdkVersion 29
         versionCode 1
         versionName "1.0"
+        signingConfig signingConfigs.release
         //testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
     }
     buildTypes {
