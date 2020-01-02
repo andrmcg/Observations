@@ -9,7 +9,7 @@ import android.view.View
 import android.view.ViewGroup
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.Observer
-import androidx.lifecycle.ViewModelProviders
+import androidx.lifecycle.ViewModelProvider
 import androidx.navigation.NavController
 import androidx.navigation.fragment.findNavController
 import androidx.recyclerview.widget.LinearLayoutManager
@@ -47,7 +47,8 @@ class DisplayObservationsFragment : Fragment(), View.OnLongClickListener {
         super.onActivityCreated(savedInstanceState)
         navController = findNavController()
 
-        observationViewModel = ViewModelProviders.of(this).get(ObservationViewModel::class.java)
+        observationViewModel = ViewModelProvider(this).get(ObservationViewModel::class.java)
+        //observationViewModel = ViewModelProviders.of(this).get(ObservationViewModel::class.java)
         observationViewModel.observations.observe(this, Observer { c ->
             c.let {
                 if (c.isNotEmpty()) {

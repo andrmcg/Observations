@@ -9,7 +9,7 @@ import android.widget.ArrayAdapter
 import android.widget.AutoCompleteTextView
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.Observer
-import androidx.lifecycle.ViewModelProviders
+import androidx.lifecycle.ViewModelProvider
 import androidx.navigation.NavController
 import androidx.navigation.fragment.findNavController
 import com.google.android.material.textfield.TextInputLayout
@@ -39,8 +39,8 @@ class ObservationFragment : Fragment() {
 
         populateControls()
         setUpButtons()
-
-        observationViewModel = ViewModelProviders.of(this).get(ObservationViewModel::class.java)
+        observationViewModel = ViewModelProvider(this).get(ObservationViewModel::class.java)
+        //observationViewModel = ViewModelProviders.of(this).get(ObservationViewModel::class.java)
         observationViewModel.observations.observe(this, Observer { c ->
             c.let {
                 if (c.isNotEmpty()) {
